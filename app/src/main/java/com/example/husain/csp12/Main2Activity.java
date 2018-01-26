@@ -16,6 +16,7 @@ public class Main2Activity extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthListener;
 
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -29,6 +30,7 @@ public class Main2Activity extends AppCompatActivity {
         button=(Button) findViewById(R.id.button3);
         b1=(Button)findViewById(R.id.button4);
         b2=(Button)findViewById(R.id.button2);
+
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override

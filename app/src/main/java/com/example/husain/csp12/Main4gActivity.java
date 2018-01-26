@@ -2,6 +2,7 @@ package com.example.husain.csp12;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,6 +37,7 @@ public class Main4gActivity extends AppCompatActivity {
     int m=0;
     String size , loc;
     Bitmap image ;
+    Uri uri;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +66,7 @@ public class Main4gActivity extends AppCompatActivity {
                     intent.putExtra("loc", loc);
                     intent.putExtra("size",size);
                     intent.putExtra("picture", byteArray);
+                    intent.putExtra("img" , uri);
                     startActivity(intent);
                 }
 
@@ -114,6 +117,7 @@ public class Main4gActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         m=1;
         Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+        uri =data.getData();
         image = bitmap;
         imageView.setImageBitmap(bitmap);
         Bitmap bmp = bitmap;
