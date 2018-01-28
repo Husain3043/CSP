@@ -16,15 +16,6 @@
         android:layout_weight="9" />
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnCamera"
-        android:layout_weight="1"
-        android:background="@android:color/darker_gray"
-        android:textColor="@android:color/black"
-        android:text="Capture Image"/>
-
-    <Button
         android:id="@+id/button5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

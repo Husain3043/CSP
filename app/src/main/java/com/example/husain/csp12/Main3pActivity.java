@@ -36,7 +36,7 @@ public class Main3pActivity extends AppCompatActivity implements LocationListene
         setContentView(R.layout.activity_main3p);
 
         locationText = (TextView) findViewById(R.id.LocationText);
-        getLocationBtn = (Button) findViewById(R.id.getLocationBtn);
+
         strs = (TextView) findViewById(R.id.textView3);
         button = (Button) findViewById(R.id.button2);
 
@@ -53,9 +53,7 @@ public class Main3pActivity extends AppCompatActivity implements LocationListene
             }
         });
 
-        getLocationBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+
                 if (Build.VERSION.SDK_INT > -Build.VERSION_CODES.M) {
                     if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                         getLocation();
@@ -69,9 +67,9 @@ public class Main3pActivity extends AppCompatActivity implements LocationListene
                     getLocation();
                 }
             }
-        });
 
-    }
+
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

@@ -36,7 +36,6 @@ public class Main3gActivity extends AppCompatActivity implements LocationListene
         setContentView(R.layout.activity_main3g);
 
         locationText = (TextView) findViewById(R.id.LocationText);
-        getLocationBtn = (Button) findViewById(R.id.getLocationBtn);
         strs = (TextView) findViewById(R.id.textView3);
         button = (Button) findViewById(R.id.button2);
 
@@ -53,9 +52,6 @@ public class Main3gActivity extends AppCompatActivity implements LocationListene
             }
         });
 
-        getLocationBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 if (Build.VERSION.SDK_INT > -Build.VERSION_CODES.M) {
                     if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                         getLocation();
@@ -68,8 +64,7 @@ public class Main3gActivity extends AppCompatActivity implements LocationListene
                 } else {
                     getLocation();
                 }
-            }
-        });
+
 
     }
 

@@ -7,17 +7,6 @@
     tools:context="com.example.husain.csp12.Main3pActivity">
 
 
-    <Button
-        android:id="@+id/getLocationBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="167dp"
-        android:text="Click here for Location"
-        tools:layout_editor_absoluteX="120dp"
-        tools:layout_editor_absoluteY="294dp" />
-
     <TextView
         android:id="@+id/LocationText"
         android:layout_width="400dp"
@@ -40,11 +29,10 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/getLocationBtn"
-        android:layout_marginBottom="69dp"
-        android:layout_marginStart="64dp"
-        android:text="Go Ahead ->>" />
+        android:layout_above="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="66dp"
+        android:text="Confirm your Location" />
 
     <TextView
         android:id="@+id/textView2"

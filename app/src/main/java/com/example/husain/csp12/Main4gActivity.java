@@ -12,6 +12,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
@@ -38,6 +45,7 @@ public class Main4gActivity extends AppCompatActivity {
     String size , loc;
     Bitmap image ;
     Uri uri;
+    private StorageReference mstr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,41 +55,38 @@ public class Main4gActivity extends AppCompatActivity {
          loc=bundle.getString("loc");
 
 
-        Button btnCamera = (Button) findViewById(R.id.btnCamera);
+
         imageView = (ImageView) findViewById(R.id.imageView);
         Button sub = (Button)findViewById(R.id.button5);
 
         sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(m==0)
-                    Toast.makeText(getApplicationContext() , "Please Give Image " , Toast.LENGTH_SHORT).show();
-                else{
 
-                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                    image.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                    byte[] byteArray = stream.toByteArray();
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-                    Intent intent =new Intent(Main4gActivity.this , Main5gActivity.class);
-                    intent.putExtra("loc", loc);
-                    intent.putExtra("size",size);
-                    intent.putExtra("picture", byteArray);
-                    intent.putExtra("img" , uri);
-                    startActivity(intent);
-                }
+
+                mstr = FirebaseStorage.getInstance().getReference();
+                StorageReference up = mstr.child("GARBAGE PROBLEM").child(user.getDisplayName()+ "  ## Location : " + loc + "  ## VOLUME : "+ size);
+                up.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Uri dw = taskSnapshot.getDownloadUrl();
+                        Toast.makeText(getApplicationContext() , "Thank you for uploading the problem " , Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
+
 
             }
         });
 
-        btnCamera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+
 
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(intent, 0);
 
-            }
-        });
 
         mLoaderCallback = new BaseLoaderCallback(this) {
             @Override
@@ -168,6 +173,8 @@ public class Main4gActivity extends AppCompatActivity {
         }
         area=area/19;
         max =Math.sqrt(area);
+        max=max*max*max;
+        max=Math.ceil(max);
         size=String.valueOf(max);
         Toast.makeText(getApplicationContext() , "Calculating Volume of Garbage......." , Toast.LENGTH_SHORT).show();
 
