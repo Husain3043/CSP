@@ -1,11 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/ubuntu/Desktop/GIT/FInalDemo/openCVLibrary330/build/intermediates/res/merged/androidTest/debug/values_values.arsc.flat",
-            "map": []
-        },
-        {
-            "outputFile": "/home/ubuntu/Desktop/GIT/FInalDemo/C:\\Users\\husain\\AndroidStudioProjects\\CSP12\\openCVLibrary330\\build\\intermediates\\res\\merged\\androidTest\\debug\\values_values.arsc.flat",
+            "outputFile": "C:\\Users\\Kazi\\Git\\FInalDemo\\openCVLibrary330\\build\\intermediates\\res\\merged\\androidTest\\debug\\values_values.arsc.flat",
             "map": []
         }
     ]
