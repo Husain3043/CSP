@@ -43,13 +43,13 @@ public class Main3pActivity extends AppCompatActivity implements LocationListene
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (str == "00") {
-                    Toast.makeText(getApplicationContext(), "please give your Location", Toast.LENGTH_SHORT).show();
-                } else {
+               // if (str == "00") {
+              //      Toast.makeText(getApplicationContext(), "please give your Location", Toast.LENGTH_SHORT).show();
+              //  } else {
                     Intent intent = new Intent(Main3pActivity.this , Main4pActivity.class);
                     intent.putExtra("loc",str);
                     startActivity(intent);
-                }
+              //  }
             }
         });
 
