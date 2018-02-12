@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -41,6 +42,7 @@ public class Main4gActivity extends AppCompatActivity {
     ImageView imageView;
     BaseLoaderCallback mLoaderCallback;
     double area ,  max;
+    TextView t1 , t2;
     int m=0;
     String size , loc;
     Bitmap image ;
@@ -58,6 +60,8 @@ public class Main4gActivity extends AppCompatActivity {
 
         imageView = (ImageView) findViewById(R.id.imageView);
         Button sub = (Button)findViewById(R.id.button5);
+        t1=(TextView)findViewById(R.id.txt1);
+        t2=(TextView)findViewById(R.id.txt2);
 
         sub.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,10 +69,14 @@ public class Main4gActivity extends AppCompatActivity {
 
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                image.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                final byte[] byteArray = stream.toByteArray();
+
 
                 mstr = FirebaseStorage.getInstance().getReference();
-                StorageReference up = mstr.child("GARBAGE PROBLEM").child(user.getDisplayName()+ "  ## Location : " + loc + "  ## VOLUME : "+ size);
-                up.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                StorageReference up = mstr.child("GARBAGE PROBLEM").child(user.getDisplayName()+ " / ## Location : " + loc + "  ## VOLUME : "+ size);
+                up.putBytes(byteArray).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         Uri dw = taskSnapshot.getDownloadUrl();
@@ -178,7 +186,8 @@ public class Main4gActivity extends AppCompatActivity {
         size=String.valueOf(max);
         Toast.makeText(getApplicationContext() , "Calculating Volume of Garbage......." , Toast.LENGTH_SHORT).show();
 
-
+            t1.setText(loc);
+            t2.setText(size);
 
 
     }

@@ -90,26 +90,30 @@ public class Main4pActivity extends AppCompatActivity {
 
                 StorageReference storageRef = FirebaseStorage.getInstance().getReference();
 
-                StorageReference riversRef = storageRef.child("Potholes" + "/" + user.getDisplayName() );
+                StorageReference riversRef = storageRef.child("Potholes" + "/" + user.getDisplayName()+"/ Image " );
 
-                riversRef.putBytes(byteArray)
+                
+
+                riversRef.putBytes(byteArray2)
                         .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                                 // Get a URL to the uploaded content
                                 Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                                Toast.makeText(getApplicationContext() , "Thank you for uploading the problem " , Toast.LENGTH_SHORT).show();
                             }
                         });
 
-                StorageReference riversRef2 = storageRef.child("Potholes" + "/"+user.getDisplayName() + " Location :"+loc + " size :" + size + " inches");
+                StorageReference riversRef2 = storageRef.child("Potholes" + "/"+user.getDisplayName() + "/ Location :"+loc + " size :" + size + " inches");
 
 
-                riversRef2.putBytes(byteArray2)
+                riversRef2.putBytes(byteArray)
                         .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                                 // Get a URL to the uploaded content
                                 Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                                Toast.makeText(getApplicationContext() , "Thank you for uploading the problem " , Toast.LENGTH_SHORT).show();
                             }
                         });
 
