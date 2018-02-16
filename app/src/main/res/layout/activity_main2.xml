@@ -12,8 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="99dp"
-        android:layout_marginStart="118dp"
+        android:layout_marginBottom="109dp"
+        android:layout_marginStart="138dp"
         android:text="LogOut"
         tools:layout_editor_absoluteX="37dp"
         tools:layout_editor_absoluteY="5dp" />
@@ -22,19 +22,19 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button3"
-        android:layout_alignEnd="@+id/button3"
-        android:layout_marginBottom="110dp"
-        android:text="Garbage" />
+        android:layout_below="@+id/button4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="77dp"
+        android:text="UPLOAD SOLUTION" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/button2"
         android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="71dp"
-        android:text="Pothole" />
+        android:text="Access Data" />
 
 
 </RelativeLayout>

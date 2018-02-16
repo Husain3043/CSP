@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,10 +42,11 @@ public class Main4gActivity extends AppCompatActivity {
 
     ImageView imageView;
     BaseLoaderCallback mLoaderCallback;
-    double area ,  max;
-    TextView t1 , t2;
+    double area=0 ,  max=0;
+    TextView t1;
+    EditText t2;
     int m=0;
-    String size , loc;
+    String size="00" , loc;
     Bitmap image ;
     Uri uri;
     private StorageReference mstr;
@@ -61,30 +63,38 @@ public class Main4gActivity extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.imageView);
         Button sub = (Button)findViewById(R.id.button5);
         t1=(TextView)findViewById(R.id.txt1);
-        t2=(TextView)findViewById(R.id.txt2);
+
+
+
 
         sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                image.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                final byte[] byteArray = stream.toByteArray();
 
 
-                mstr = FirebaseStorage.getInstance().getReference();
-                StorageReference up = mstr.child("GARBAGE PROBLEM").child(user.getDisplayName()+ " / ## Location : " + loc + "  ## VOLUME : "+ size);
-                up.putBytes(byteArray).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Uri dw = taskSnapshot.getDownloadUrl();
-                        Toast.makeText(getApplicationContext() , "Thank you for uploading the problem " , Toast.LENGTH_SHORT).show();
+                    if (max == 0) {
 
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                        image.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                        final byte[] byteArray = stream.toByteArray();
+
+
+                        mstr = FirebaseStorage.getInstance().getReference();
+                        StorageReference up = mstr.child("Solved problems").child(user.getDisplayName()+" " + " / ## Location : " + loc + "  ## VOLUME : " + size);
+                        up.putBytes(byteArray).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                Uri dw = taskSnapshot.getDownloadUrl();
+                                Toast.makeText(getApplicationContext(), "Solution Uploaded ", Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Problem not solve appropriately", Toast.LENGTH_SHORT).show();
                     }
-                });
-
 
 
             }
@@ -171,7 +181,7 @@ public class Main4gActivity extends AppCompatActivity {
             Imgproc.rectangle(draw, rect.tl(), rect.br(), new Scalar(255, 0, 0),1, 8,0);
 
         }
-        area=-1;
+        area=0;
         for(int i=0 ; i<contours.size() ; i++){
             max=Imgproc.contourArea(contours.get(i));
             if(area<max){
@@ -179,15 +189,15 @@ public class Main4gActivity extends AppCompatActivity {
             }
 
         }
-        area=area/19;
+        area=area/18.75;
         max =Math.sqrt(area);
-        max=max*max*max;
+        max=max;
         max=Math.ceil(max);
         size=String.valueOf(max);
-        Toast.makeText(getApplicationContext() , "Calculating Volume of Garbage......." , Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext() , "Testing the Image....." , Toast.LENGTH_SHORT).show();
 
             t1.setText(loc);
-            t2.setText(size);
+
 
 
     }

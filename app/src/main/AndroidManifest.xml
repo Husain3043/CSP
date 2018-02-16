@@ -25,7 +25,6 @@
         <activity android:name=".Main2Activity" />
         <activity android:name=".Main3pActivity" />
         <activity android:name=".Main3gActivity" />
-        <activity android:name=".Main4pActivity" />
         <activity android:name=".Main4gActivity" />
     </application>
 

@@ -7,41 +7,12 @@
     tools:context="com.example.husain.csp12.Main3pActivity">
 
 
-    <TextView
-        android:id="@+id/LocationText"
-        android:layout_width="400dp"
-        android:layout_height="70dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView3"
-        android:layout_marginTop="15dp"
-        android:textAlignment="center" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="400dp"
-        android:layout_height="70dp"
-        android:layout_alignParentStart="true"
+    <ListView
+        android:id="@+id/user_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="68dp"
-        android:textAlignment="center" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textView2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="66dp"
-        android:text="Confirm your Location" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:layout_alignEnd="@+id/button2"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="30dp"
-        android:text="please Enable GPS" />
+        android:layout_centerHorizontal="true" />
 
 
 
