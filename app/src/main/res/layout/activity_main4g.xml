@@ -9,6 +9,12 @@
     tools:context="com.example.husain.csp12.Main4gActivity">
 
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="9"
+        android:text="TextView" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"

@@ -46,7 +46,7 @@ public class Main4gActivity extends AppCompatActivity {
     TextView t1;
     EditText t2;
     int m=0;
-    String size="00" , loc;
+    String size="1100" , loc;
     Bitmap image ;
     Uri uri;
     private StorageReference mstr;
@@ -73,7 +73,7 @@ public class Main4gActivity extends AppCompatActivity {
 
 
 
-                    if (max == 0) {
+                    if (max <2) {
 
                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
